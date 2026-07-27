@@ -1,0 +1,659 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Michael Benjamin Pabingui – Ingénieur SI, Entrepreneur & Consultant IT{% endblock %}
+
+{% block extra_head %}
+<style>
+    /* ─── HERO ─── */
+    .hero {
+        min-height: calc(100vh - 5rem);
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        padding: 5rem 0 4rem;
+    }
+
+    .hero-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+    }
+
+    .hero-orb-1 {
+        position: absolute;
+        top: -10%;
+        right: -5%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(0, 212, 255, 0.12) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+    .hero-orb-2 {
+        position: absolute;
+        bottom: -20%;
+        left: -10%;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(245, 166, 35, 0.06) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+    .hero-corner {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 400px;
+        height: 400px;
+        border-left: 1px solid rgba(0, 212, 255, 0.08);
+        border-bottom: 1px solid rgba(0, 212, 255, 0.08);
+        pointer-events: none;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .hero-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.375rem 0.875rem;
+        border: 1px solid rgba(0, 212, 255, 0.2);
+        background: rgba(0, 212, 255, 0.05);
+        font-size: 0.75rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--cyan);
+        margin-bottom: 2rem;
+    }
+
+    .hero-tag-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--cyan);
+        animation: pulse-glow 2s infinite;
+    }
+
+    .hero-name {
+        font-family: 'Syne', sans-serif;
+        font-size: clamp(3rem, 7vw, 5.5rem);
+        font-weight: 800;
+        line-height: 0.95;
+        letter-spacing: -0.03em;
+        color: var(--white);
+        margin-bottom: 0.5rem;
+    }
+
+    .hero-name .line-2 {
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(240, 244, 255, 0.4);
+    }
+
+    .hero-title-bar {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin: 1.5rem 0 2rem;
+    }
+
+    .hero-title-bar span {
+        font-size: 0.875rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        font-weight: 500;
+    }
+
+    .hero-title-bar .sep {
+        width: 4px;
+        height: 4px;
+        background: var(--cyan);
+        transform: rotate(45deg);
+        flex-shrink: 0;
+    }
+
+    .hero-description {
+        font-size: 1.0625rem;
+        line-height: 1.7;
+        color: var(--muted);
+        max-width: 480px;
+        margin-bottom: 3rem;
+        font-weight: 300;
+    }
+
+    .hero-description strong {
+        color: var(--white);
+        font-weight: 500;
+    }
+
+    .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 4rem;
+    }
+
+    .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border);
+        max-width: 440px;
+    }
+
+    .stat-number {
+        font-family: 'Syne', sans-serif;
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--white);
+        line-height: 1;
+    }
+
+    .stat-number span {
+        color: var(--cyan);
+    }
+
+    .stat-label {
+        font-size: 0.75rem;
+        color: var(--muted);
+        margin-top: 0.375rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+    /* ─── HERO RIGHT PANEL ─── */
+    .hero-right {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .profile-frame {
+        position: relative;
+        width: 340px;
+        height: 420px;
+    }
+
+    .profile-frame-border {
+        position: absolute;
+        top: -12px;
+        right: -12px;
+        width: 100%;
+        height: 100%;
+        border: 1px solid var(--cyan);
+        opacity: 0.3;
+    }
+
+.profile-frame-bg {
+    width: 100%;
+    height: 100%;
+    background: var(--navy-light);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-frame-bg img {
+    position: absolute;   /* Permet de remplir exactement le cadre */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     /* Remplit le cadre sans déformation */
+    display: block;        /* Supprime les marges inline */
+}
+
+.profile-placeholder {
+    font-family: 'Syne', sans-serif;
+    font-size: 5rem;
+    font-weight: 800;
+    color: rgba(0, 212, 255, 0.15);
+    letter-spacing: -0.05em;
+    position: absolute;    /* Centré dans le cadre si utilisé */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+    .profile-badge {
+        position: absolute;
+        bottom: -20px;
+        left: -20px;
+        background: var(--navy-mid);
+        border: 1px solid var(--border);
+        padding: 1rem 1.25rem;
+        min-width: 180px;
+    }
+
+    .profile-badge-label {
+        font-size: 0.6875rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+    }
+
+    .profile-badge-value {
+        font-family: 'Syne', sans-serif;
+        font-size: 0.9375rem;
+        font-weight: 700;
+        color: var(--white);
+        margin-top: 0.25rem;
+    }
+
+    .certs-float {
+        position: absolute;
+        top: 20px;
+        right: -30px;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+
+    .cert-pill::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--cyan);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .cert-pill:hover {
+        border-color: rgba(0, 212, 255, 0.25);
+        transform: translateY(-4px);
+    }
+
+    .cert-pill:hover::after {
+        transform: scaleX(1);
+    }
+
+    .cert-pill {
+        background: var(--navy-mid);
+        border: 1px solid var(--border);
+        padding: 0.375rem 0.875rem;
+        font-size: 0.6875rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--cyan);
+        white-space: nowrap;
+        transition: all 0.3s;
+        overflow: hidden;
+    }
+
+    /* ─── ROLES SECTION ─── */
+    .roles-section {
+        padding: 6rem 0;
+        position: relative;
+    }
+
+    .role-card {
+        padding: 2rem;
+        border: 1px solid var(--border);
+        background: var(--navy-mid);
+        position: relative;
+        transition: all 0.3s;
+        overflow: hidden;
+    }
+
+    .role-card::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--cyan);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .role-card:hover {
+        border-color: rgba(0, 212, 255, 0.25);
+        transform: translateY(-4px);
+    }
+
+    .role-card:hover::after {
+        transform: scaleX(1);
+    }
+
+    .role-number {
+        font-family: 'Syne', sans-serif;
+        font-size: 3rem;
+        font-weight: 800;
+        color: rgba(0, 212, 255, 0.08);
+        line-height: 1;
+        margin-bottom: 1.5rem;
+    }
+
+    .role-title {
+        font-family: 'Syne', sans-serif;
+        font-size: 1.0625rem;
+        font-weight: 700;
+        color: var(--white);
+        margin-bottom: 0.375rem;
+    }
+
+    .role-company {
+        font-size: 0.8125rem;
+        color: var(--cyan);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+    }
+
+    .role-desc {
+        font-size: 0.875rem;
+        color: var(--muted);
+        line-height: 1.6;
+    }
+
+    /* ─── FEATURED PROJECTS ─── */
+    .project-card {
+        background: var(--navy-mid);
+        border: 1px solid var(--border);
+        transition: all 0.3s;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .project-card:hover {
+        border-color: rgba(0, 212, 255, 0.3);
+        transform: translateY(-4px);
+    }
+
+    .project-img {
+        height: 200px;
+        background: var(--navy-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .project-img::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent 50%, var(--navy-mid) 100%);
+    }
+
+    .project-cat {
+        font-size: 0.6875rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--cyan);
+        font-weight: 500;
+    }
+
+    .tech-tag {
+        display: inline-block;
+        padding: 0.25rem 0.625rem;
+        background: rgba(0, 212, 255, 0.06);
+        border: 1px solid rgba(0, 212, 255, 0.15);
+        font-size: 0.6875rem;
+        letter-spacing: 0.05em;
+        color: var(--cyan);
+        text-transform: uppercase;
+        margin: 0.25rem 0.25rem 0 0;
+    }
+
+    /* ─── SCROLL INDICATOR ─── */
+    .scroll-indicator {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--muted);
+        font-size: 0.6875rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+    }
+
+    .scroll-line {
+        width: 1px;
+        height: 60px;
+        background: linear-gradient(to bottom, var(--cyan), transparent);
+        animation: fadeInUp 1.5s infinite;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<section class="hero">
+    <div class="hero-bg">
+        <div class="grid-lines"></div>
+        <div class="hero-orb-1"></div>
+        <div class="hero-orb-2"></div>
+        <div class="hero-corner"></div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-6 w-full">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+
+            <!-- Left -->
+            <div class="hero-content">
+                <div class="hero-tag animate-fade-up">
+                    <div class="hero-tag-dot"></div>
+                    Disponible pour opportunités
+                </div>
+
+                <h1 class="hero-name animate-fade-up-delay-1">
+                    Michael<br>
+                    <span class="line-2">Benjamin</span>
+                </h1>
+                <div class="hero-name animate-fade-up-delay-1" style="font-size: clamp(1.75rem, 4vw, 3rem); margin-top: 0.5rem; color: var(--cyan);">
+                    Pabingui
+                </div>
+
+                <div class="hero-title-bar animate-fade-up-delay-2">
+                    <span>Ingénieur SI</span>
+                    <div class="sep"></div>
+                    <span>Entrepreneur</span>
+                    <div class="sep"></div>
+                    <span>Consultant IT</span>
+                </div>
+
+                <p class="hero-description animate-fade-up-delay-2">
+                    Expert en <strong>transformation numérique</strong>, cybersécurité et architecture cloud.
+                    Je pilote des produits tech et accompagne les organisations dans leur
+                    <strong>évolution digitale</strong>.
+                </p>
+
+                <div class="hero-actions animate-fade-up-delay-3">
+                    <a href="{% url 'projects' %}" class="btn-primary">
+                        Voir mes projets
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="{% url 'contact' %}" class="btn-secondary">
+                        Me contacter
+                    </a>
+                </div>
+
+                <div class="hero-stats animate-fade-up-delay-4">
+                    <div>
+                        <div class="stat-number">4<span>+</span></div>
+                        <div class="stat-label">Rôles actifs</div>
+                    </div>
+                    <div>
+                        <div class="stat-number">3<span>+</span></div>
+                        <div class="stat-label">Certifications</div>
+                    </div>
+                    <div>
+                        <div class="stat-number">10<span>+</span></div>
+                        <div class="stat-label">Projets livrés</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right – Profile Visual -->
+            <div class="hero-right hidden md:flex animate-fade-up-delay-2">
+                <div class="profile-frame">
+                    <div class="profile-frame-border"></div>
+                    <div class="profile-frame-bg">
+                        <!-- Replace with actual photo: <img src="{% static 'images/michael.jpg' %}" alt="Michael Benjamin Pabingui"> -->
+                         <img src="{% static 'images/portfolio_profil2.png' %}" alt="Michael Benjamin Pabingui">
+                    </div>
+
+                    <div class="profile-badge">
+                        <div class="profile-badge-label">Poste actuel</div>
+                        <div class="profile-badge-value">PDG · Cipro</div>
+                        <div class="profile-badge-value">CPO · Senagora</div>
+                        <div class="profile-badge-value">RQ · TotalEnergie</div>
+                    </div>
+
+                    <div class="certs-float">
+                        <div class="cert-pill">CCNA</div>
+                        <div class="cert-pill">AWS SAA</div>
+                        <div class="cert-pill">Security +</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="flex justify-center mt-16 animate-fade-up-delay-4">
+            <div class="scroll-indicator">
+                <div class="scroll-line"></div>
+                <span>Scroll</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════ ROLES ═══════════════════════════════ -->
+<section class="roles-section">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex items-end justify-between mb-12 flex-wrap gap-4">
+            <div>
+                <div class="section-label">Fonctions actuelles</div>
+                <h2 style="font-family: 'Syne', sans-serif; font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em;">
+                    4 rôles,<br>
+                    <span style="color: var(--muted); -webkit-text-stroke: 0.5px rgba(240,244,255,0.3);">1 vision.</span>
+                </h2>
+            </div>
+            <a href="{% url 'experience' %}" class="btn-secondary text-sm">
+                Voir toutes les expériences →
+            </a>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="role-card">
+                <div class="role-number">01</div>
+                <div class="role-title">Chief Product Officer</div>
+                <div class="role-company">Senagora</div>
+                <div class="role-desc">Gestion des produits numériques, stratégie d'innovation et accompagnement startups.</div>
+            </div>
+            <div class="role-card">
+                <div class="role-number">02</div>
+                <div class="role-title">Directeur Informatique</div>
+                <div class="role-company">Sanziri Security</div>
+                <div class="role-desc">Infrastructure IT, cybersécurité et pilotage de la transformation digitale.</div>
+            </div>
+            <div class="role-card">
+                <div class="role-number">03</div>
+                <div class="role-title">PDG</div>
+                <div class="role-company">CIPRO</div>
+                <div class="role-desc">Direction générale, stratégie d'entreprise et développement commercial.</div>
+            </div>
+            <div class="role-card">
+                <div class="role-number">04</div>
+                <div class="role-title">Responsable Qualité</div>
+                <div class="role-company">ADM Value</div>
+                <div class="role-desc">Management de la qualité, processus et standards IT.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════ FEATURED PROJECTS ═══════════════════ -->
+{% if featured_projects %}
+<section style="padding: 4rem 0 6rem;">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex items-end justify-between mb-12 flex-wrap gap-4">
+            <div>
+                <div class="section-label">Réalisations</div>
+                <h2 style="font-family: 'Syne', sans-serif; font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; letter-spacing: -0.02em;">
+                    Projets sélectionnés
+                </h2>
+            </div>
+            <a href="{% url 'projects' %}" class="btn-secondary text-sm">
+                Tous les projets →
+            </a>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            {% for project in featured_projects %}
+            <a href="{% url 'project_detail' project.slug %}" class="project-card" style="text-decoration: none;">
+                <div class="project-img">
+                    {% if project.image %}
+                    <img src="{{ project.image.url }}" alt="{{ project.title }}" style="width:100%; height:100%; object-fit:cover;">
+                    {% else %}
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(0,212,255,0.2)" stroke-width="1">
+                        <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+                    </svg>
+                    {% endif %}
+                </div>
+                <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
+                    <div class="project-cat mb-3">{{ project.get_category_display }}</div>
+                    <h3 style="font-family: 'Syne', sans-serif; font-size: 1.0625rem; font-weight: 700; color: var(--white); margin-bottom: 0.75rem;">
+                        {{ project.title }}
+                    </h3>
+                    <p style="font-size: 0.875rem; color: var(--muted); line-height: 1.6; flex: 1; margin-bottom: 1.25rem;">
+                        {{ project.description|truncatechars:100 }}
+                    </p>
+                    <div>
+                        {% for tech in project.get_technologies_list %}
+                        <span class="tech-tag">{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+
+<!-- ═══════════════════════════════ CTA BAND ═══════════════════════════ -->
+<section style="padding: 5rem 0; background: var(--navy-mid); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <div class="section-label" style="justify-content: center;">Travaillons ensemble</div>
+        <h2 style="font-family: 'Syne', sans-serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1.5rem;">
+            Un projet en tête ?<br>
+            <span style="color: var(--cyan);">Discutons-en.</span>
+        </h2>
+        <p style="color: var(--muted); font-size: 1.0625rem; max-width: 480px; margin: 0 auto 2.5rem; font-weight: 300; line-height: 1.7;">
+            Recrutement, partenariat, projet freelance ou simplement échanger — je suis ouvert à toute conversation.
+        </p>
+        <a href="{% url 'contact' %}" class="btn-primary" style="font-size: 1rem; padding: 1rem 2.5rem;">
+            Envoyer un message
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+        </a>
+    </div>
+</section>
+
+{% endblock %}

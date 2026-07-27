@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+
+{% block title %}Compétences – Michael Benjamin Pabingui{% endblock %}
+
+{% block extra_head %}
+<style>
+    .skill-section {
+        background: var(--navy-mid);
+        border: 1px solid var(--border);
+        padding: 2rem;
+        transition: border-color .3s;
+    }
+    .skill-section:hover {
+        border-color: rgba(0,212,255,.25);
+    }
+    .skill-section-title {
+        font-family: 'Syne', sans-serif;
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: var(--white);
+        margin-bottom: .25rem;
+    }
+    .skill-section-sub {
+        font-size: .75rem;
+        color: var(--cyan);
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+    }
+    .skill-bar-wrap {
+        margin-bottom: 1rem;
+    }
+    .skill-bar-label {
+        display: flex;
+        justify-content: space-between;
+        font-size: .8125rem;
+        color: var(--muted);
+        margin-bottom: .375rem;
+    }
+    .skill-bar-label span:last-child {
+        color: var(--white);
+        font-weight: 500;
+    }
+    .skill-bar-bg {
+        height: 3px;
+        background: rgba(255,255,255,.06);
+        position: relative;
+        overflow: hidden;
+    }
+    .skill-bar-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--cyan), rgba(0,212,255,.4));
+        transition: width 1.2s cubic-bezier(.25,.1,.25,1);
+        width: 0;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto px-6" style="padding-top:4rem; padding-bottom:6rem;">
+    <div style="margin-bottom:4rem;">
+        <div class="section-label">Expertise</div>
+        <h1 style="font-family:'Syne',sans-serif; font-size:clamp(2.25rem,5vw,3.5rem); font-weight:800; letter-spacing:-.02em; line-height:1.05;">
+            Stack &<br><span style="color:var(--cyan);">Compétences</span>
+        </h1>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:1.5rem;">
+        <div class="skill-section">
+            <div class="skill-section-title">Réseaux</div>
+            <div class="skill-section-sub">Infrastructure & Connectivité</div>
+            <div class="skill-bar-wrap">
+                <div class="skill-bar-label"><span>CCNA / Cisco</span><span>85%</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+                <div class="skill-bar-label"><span>Architecture réseau</span><span>80%</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+                <div class="skill-bar-label"><span>TCP/IP & Protocoles</span><span>85%</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85"></div></div>
+            </div>
+        </div>
+
+        <div class="skill-section">
+            <div class="skill-section-title">Cloud</div>
+            <div class="skill-section-sub">AWS & Architecture</div>
+            <div class="skill-bar-wrap">
+                <div class="skill-bar-label"><span>AWS</span><span>80%</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+                <div class="skill-bar-label"><span>Architecture cloud</span><span>75%</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="75"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+                <div class="skill-bar-label"><span>DevOps / CI-CD</span><span>70%</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="70"></div></div>
+            </div>
+        </div>
+
+        <div class="skill-section">
+            <div class="skill-section-title">Cybersécurité</div>
+            <div class="skill-section-sub">Sécurité & Conformité</div>
+            <div class="skill-bar-wrap">
+                <div class="skill-bar-label"><span>Sécurité réseau</span><span>80%</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+                <div class="skill-bar-label"><span>Gestion des risques</span><span>75%</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="75"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+                <div class="skill-bar-label"><span>Audit IT</span><span>70%</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="70"></div></div>
+            </div>
+        </div>
+
+        <div class="skill-section">
+            <div class="skill-section-title">Management</div>
+            <div class="skill-section-sub">Leadership & Gestion</div>
+            <div class="skill-bar-wrap">
+                <div class="skill-bar-label"><span>Product Management</span><span>90%</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+                <div class="skill-bar-label"><span>Leadership d'équipe</span><span>85%</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+                <div class="skill-bar-label"><span>Agile / Scrum</span><span>85%</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85"></div></div>
+            </div>
+        </div>
+
+        <div class="skill-section">
+            <div class="skill-section-title">Développement</div>
+            <div class="skill-section-sub">Backend & Systems</div>
+            <div class="skill-bar-wrap">
+                <div class="skill-bar-label"><span>Python / Django</span><span>80%</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+                <div class="skill-bar-label"><span>Bases de données SQL</span><span>75%</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="75"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+                <div class="skill-bar-label"><span>Linux / Shell</span><span>75%</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="75"></div></div>
+            </div>
+        </div>
+
+        <div class="skill-section">
+            <div class="skill-section-title">Entrepreneuriat</div>
+            <div class="skill-section-sub">Business & Stratégie</div>
+            <div class="skill-bar-wrap">
+                <div class="skill-bar-label"><span>Stratégie d'entreprise</span><span>90%</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+                <div class="skill-bar-label"><span>Innovation</span><span>90%</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+                <div class="skill-bar-label"><span>Accompagnement Startups</span><span>85%</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85"></div></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    // Animate skill bars on scroll
+    const bars = document.querySelectorAll('.skill-bar-fill');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const bar = entry.target;
+                bar.style.width = bar.dataset.width + '%';
+                observer.unobserve(bar);
+            }
+        });
+    }, { threshold: 0.2 });
+    bars.forEach(bar => observer.observe(bar));
+</script>
+{% endblock %}

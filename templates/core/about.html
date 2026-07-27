@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}À propos – Michael Benjamin Pabingui{% endblock %}
+
+{% block extra_head %}
+<style>
+    .expertise-chip {
+        display: inline-block;
+        padding: .5rem 1.125rem;
+        border: 1px solid var(--border);
+        background: var(--navy-mid);
+        color: var(--muted);
+        font-size: .8125rem;
+        letter-spacing: .04em;
+        margin: .3rem .3rem 0 0;
+        transition: all .2s;
+    }
+    .expertise-chip:hover {
+        border-color: var(--cyan);
+        color: var(--cyan);
+        background: rgba(0,212,255,.05);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto px-6" style="padding-top:4rem; padding-bottom:6rem;">
+    <div style="margin-bottom:4rem;">
+        <div class="section-label">À propos</div>
+        <h1 style="font-family:'Syne',sans-serif; font-size:clamp(2.25rem,5vw,3.5rem); font-weight:800; letter-spacing:-.02em; line-height:1.05;">
+            Ingénieur, Entrepreneur,<br>
+            <span style="color:var(--cyan);">Visionnaire.</span>
+        </h1>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start;" class="flex-col md:grid">
+        <div>
+            <p style="color:var(--muted); font-size:1.0625rem; line-height:1.85; margin-bottom:1.5rem; font-weight:300;">
+                Michael Benjamin Pabingui est un <strong style="color:var(--white); font-weight:500;">ingénieur en systèmes d'information</strong> et entrepreneur technologique passionné par la transformation numérique et l'innovation.
+            </p>
+            <p style="color:var(--muted); font-size:1rem; line-height:1.85; margin-bottom:1.5rem; font-weight:300;">
+                Il occupe simultanément plusieurs rôles stratégiques dans des organisations diverses, alliant <strong style="color:var(--white); font-weight:500;">leadership technique</strong>, management de produit et vision entrepreneuriale.
+            </p>
+            <p style="color:var(--muted); font-size:1rem; line-height:1.85; font-weight:300;">
+                Sa vision : accélérer l'adoption des technologies cloud, de la cybersécurité et des pratiques agiles pour construire des organisations plus résilientes et innovantes.
+            </p>
+
+            <div style="margin-top:2.5rem;">
+                <div class="section-label">Certifications en cours</div>
+                <div style="display:flex; flex-direction:column; gap:.875rem;">
+                    <div style="display:flex; align-items:center; gap:1rem; padding:1rem 1.25rem; background:var(--navy-mid); border:1px solid var(--border);">
+                        <div style="width:8px; height:8px; background:var(--cyan); border-radius:50%; flex-shrink:0;"></div>
+                        <span style="color:var(--white); font-size:.9375rem;">Cisco Certified Network Associate (CCNA)</span>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:1rem; padding:1rem 1.25rem; background:var(--navy-mid); border:1px solid var(--border);">
+                        <div style="width:8px; height:8px; background:var(--amber); border-radius:50%; flex-shrink:0;"></div>
+                        <span style="color:var(--white); font-size:.9375rem;">AWS Certified Solutions Architect</span>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:1rem; padding:1rem 1.25rem; background:var(--navy-mid); border:1px solid var(--border);">
+                        <div style="width:8px; height:8px; background:var(--cyan); border-radius:50%; flex-shrink:0;"></div>
+                        <span style="color:var(--white); font-size:.9375rem;">CompTIA Security+</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="section-label">Domaines d'expertise</div>
+            {% for domain, items in skills.items %}
+            <div style="margin-bottom:2rem;">
+                <h3 style="font-family:'Syne',sans-serif; font-size:1rem; font-weight:700; color:var(--white); margin-bottom:1rem;">{{ domain }}</h3>
+                <div>
+                    {% for item in items %}
+                    <span class="expertise-chip">{{ item }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

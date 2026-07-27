@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Michael Benjamin Pabingui – Ingénieur SI & Entrepreneur{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}Ingénieur en systèmes d'information, entrepreneur et expert en transformation numérique. CPO chez Senagora, DI chez Sanziri Security, PDG de CIPRO.{% endblock %}">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+    <style>
+        :root {
+            --navy: #050D1A;
+            --navy-mid: #0A1628;
+            --navy-light: #0F2040;
+            --cyan: #00D4FF;
+            --cyan-dim: #00A8C8;
+            --amber: #F5A623;
+            --white: #F0F4FF;
+            --muted: #6B7FA3;
+            --border: rgba(0, 212, 255, 0.12);
+        }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            /* font-family: 'DM Sans', sans-serif; */
+            font-family: 'Inter', sans-serif;
+            background-color: var(--navy);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, .font-display {
+            /* font-family: 'Syne', sans-serif; */
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* ─── NOISE TEXTURE OVERLAY ─── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.4;
+        }
+
+        /* ─── NAVBAR ─── */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.25rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(5, 13, 26, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 0.875rem 0;
+        }
+
+        .nav-logo {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-logo span {
+            color: var(--cyan);
+        }
+
+        .nav-link {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--muted);
+            text-decoration: none;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--white);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--cyan);
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.25rem;
+            background: transparent;
+            border: 1px solid var(--cyan);
+            color: var(--cyan);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--cyan);
+            color: var(--navy);
+        }
+
+        /* ─── MOBILE MENU ─── */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: var(--navy);
+            z-index: 99;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem;
+        }
+
+        .mobile-menu.open {
+            display: flex;
+        }
+
+        .mobile-menu .nav-link {
+            font-size: 2rem;
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            text-transform: none;
+        }
+
+        /* ─── BUTTONS ─── */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+            padding: 0.875rem 2rem;
+            background: var(--cyan);
+            color: var(--navy);
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 0.875rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+        }
+
+        .btn-primary:hover {
+            background: #33DDFF;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+            padding: 0.875rem 2rem;
+            background: transparent;
+            color: var(--white);
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 0.875rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 1px solid rgba(240, 244, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--white);
+            background: rgba(240, 244, 255, 0.05);
+        }
+
+        /* ─── SECTION LABELS ─── */
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 1.25rem;
+        }
+
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 2rem;
+            height: 1px;
+            background: var(--cyan);
+        }
+
+        /* ─── CARDS ─── */
+        .card {
+            background: var(--navy-mid);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(0, 212, 255, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        /* ─── GRID LINES ─── */
+        .grid-lines {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        /* ─── GLOW EFFECTS ─── */
+        .glow-cyan {
+            box-shadow: 0 0 60px rgba(0, 212, 255, 0.15);
+        }
+
+        .text-cyan { color: var(--cyan); }
+        .text-muted { color: var(--muted); }
+        .text-amber { color: var(--amber); }
+
+        /* ─── FOOTER ─── */
+        footer {
+            border-top: 1px solid var(--border);
+        }
+
+        /* ─── ANIMATIONS ─── */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0,212,255,0.2); }
+            50% { box-shadow: 0 0 40px rgba(0,212,255,0.4); }
+        }
+
+        .animate-fade-up {
+            animation: fadeInUp 0.7s ease forwards;
+        }
+
+        .animate-fade-up-delay-1 { animation: fadeInUp 0.7s 0.1s ease both; }
+        .animate-fade-up-delay-2 { animation: fadeInUp 0.7s 0.2s ease both; }
+        .animate-fade-up-delay-3 { animation: fadeInUp 0.7s 0.3s ease both; }
+        .animate-fade-up-delay-4 { animation: fadeInUp 0.7s 0.4s ease both; }
+
+        /* ─── MESSAGES ─── */
+        .django-message {
+            padding: 1rem 1.5rem;
+            border-left: 3px solid var(--cyan);
+            background: rgba(0, 212, 255, 0.08);
+            color: var(--white);
+            font-size: 0.9rem;
+        }
+
+        /* ─── HAMBURGER ─── */
+        .hamburger {
+            width: 28px;
+            height: 20px;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hamburger span {
+            display: block;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* ─── SCROLLBAR ─── */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--navy); }
+        ::-webkit-scrollbar-thumb { background: var(--cyan-dim); }
+
+        /* ─── MAIN CONTENT ─── */
+        main { padding-top: 5rem; position: relative; z-index: 1; }
+    </style>
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+    <div class="max-w-6xl mx-auto px-6 flex items-center justify-between">
+        <a href="{% url 'home' %}" class="nav-logo">MBP<span>.</span></a>
+
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex items-center gap-8">
+            <a href="{% url 'home' %}" class="nav-link {% if active == 'home' %}active{% endif %}">Accueil</a>
+            <a href="{% url 'about' %}" class="nav-link {% if active == 'about' %}active{% endif %}">À propos</a>
+            <a href="{% url 'experience' %}" class="nav-link {% if active == 'experience' %}active{% endif %}">Expériences</a>
+            <a href="{% url 'skills' %}" class="nav-link {% if active == 'skills' %}active{% endif %}">Compétences</a>
+            <a href="{% url 'projects' %}" class="nav-link {% if active == 'projects' %}active{% endif %}">Projets</a>
+            <a href="{% url 'contact' %}" class="nav-cta">Me contacter</a>
+        </div>
+
+        <!-- Hamburger -->
+        <button class="md:hidden hamburger" id="hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+    <a href="{% url 'home' %}" class="nav-link">Accueil</a>
+    <a href="{% url 'about' %}" class="nav-link">À propos</a>
+    <a href="{% url 'experience' %}" class="nav-link">Expériences</a>
+    <a href="{% url 'skills' %}" class="nav-link">Compétences</a>
+    <a href="{% url 'projects' %}" class="nav-link">Projets</a>
+    <a href="{% url 'contact' %}" class="nav-cta mt-4">Me contacter</a>
+</div>
+
+<!-- MESSAGES -->
+{% if messages %}
+<div class="fixed top-20 right-6 z-50 max-w-sm space-y-2">
+    {% for message in messages %}
+    <div class="django-message">{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- MAIN CONTENT -->
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<!-- FOOTER -->
+<footer class="py-12 px-6 mt-20" style="background: var(--navy-mid);">
+    <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+                <a href="{% url 'home' %}" class="nav-logo text-xl">MBP<span>.</span></a>
+                <p class="text-muted text-sm mt-2">Ingénieur SI · Entrepreneur · Consultant IT</p>
+            </div>
+            <div class="flex items-center gap-6">
+                <a href="https://linkedin.com/in/michaelpabingui" target="_blank" class="text-muted hover:text-cyan transition-colors text-sm">LinkedIn</a>
+                <a href="https://github.com/michaelpabingui" target="_blank" class="text-muted hover:text-cyan transition-colors text-sm">GitHub</a>
+                <a href="mailto:michael@cipro.com" class="text-muted hover:text-cyan transition-colors text-sm">Email</a>
+            </div>
+        </div>
+        <div class="border-t mt-8 pt-8 flex flex-col md:flex-row items-center justify-between gap-4" style="border-color: var(--border);">
+            <p class="text-muted text-xs">© 2025 Michael Benjamin Pabingui. Tous droits réservés.</p>
+            <p class="text-muted text-xs">Construit avec Django & passion.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        mobileMenu.classList.toggle('open');
+        document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+    });
+
+    // Auto-dismiss messages
+    setTimeout(() => {
+        document.querySelectorAll('.django-message').forEach(el => {
+            el.style.transition = 'opacity 0.5s';
+            el.style.opacity = '0';
+            setTimeout(() => el.remove(), 500);
+        });
+    }, 4000);
+</script>
+
+{% block extra_scripts %}{% endblock %}
+</body>
+</html>

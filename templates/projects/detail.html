@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ project.title }} – Michael Benjamin Pabingui{% endblock %}
+
+{% block content %}
+
+<div class="max-w-4xl mx-auto px-6" style="padding-top:4rem; padding-bottom:6rem;">
+    <a href="{% url 'projects' %}" style="display:inline-flex; align-items:center; gap:.5rem; color:var(--muted); text-decoration:none; font-size:.875rem; margin-bottom:2.5rem; transition:color .2s;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--muted)'">
+        ← Retour aux projets
+    </a>
+
+<div style="font-size:.75rem; color:var(--cyan); letter-spacing:.12em; text-transform:uppercase; margin-bottom:1rem;">
+    {{ project.get_category_display }}
+</div>
+
+<h1 style="font-family:'Syne',sans-serif; font-size:clamp(2rem,5vw,3rem); font-weight:800; letter-spacing:-.02em; line-height:1.1; margin-bottom:2.5rem;">
+    {{ project.title }}
+</h1>
+
+{% if project.image %}
+<div style="width:100%; height:400px; overflow:hidden; border:1px solid var(--border); margin-bottom:3rem;">
+    <img src="{{ project.image.url }}" alt="{{ project.title }}" style="width:100%; height:100%; object-fit:cover;">
+</div>
+{% endif %}
+
+<div style="display:grid; gap:2.5rem;">
+    <div>
+        <div class="section-label">Description</div>
+        <p style="color:var(--muted); font-size:1rem; line-height:1.8;">{{ project.description }}</p>
+    </div>
+    <div>
+        <div class="section-label">Objectifs</div>
+        <p style="color:var(--muted); font-size:1rem; line-height:1.8;">{{ project.objectives }}</p>
+    </div>
+    <div>
+        <div class="section-label">Résultats</div>
+        <p style="color:var(--muted); font-size:1rem; line-height:1.8;">{{ project.results }}</p>
+    </div>
+
+    <div>
+        <div class="section-label">Impact</div>
+        <p style="color:var(--muted); font-size:1rem; line-height:1.8;">
+            {{ project.impact|safe }}</p>
+    </div>
+
+<div>
+    <div class="section-label">Fonctionnalités</div>
+    <div style="color:var(--muted); font-size:1rem; line-height:1.8;">
+        {{ project.features|safe }}
+    </div>
+</div>
+
+    <div>
+        <div class="section-label">Technologies</div>
+        <div>
+            {% for tech in project.get_technologies_list %}
+            <span style="display:inline-block; padding:.375rem .875rem; background:rgba(0,212,255,.06); border:1px solid rgba(0,212,255,.2); font-size:.8125rem; color:var(--cyan); text-transform:uppercase; letter-spacing:.06em; margin:.25rem .25rem 0 0;">
+                {{ tech }}
+            </span>
+            {% endfor %}
+        </div>
+    </div>
+    {% if project.link or project.github %}
+    <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+        {% if project.link %}
+        <a href="{{ project.link }}" target="_blank" class="btn-primary">Voir le projet →</a>
+        {% endif %}
+        {% if project.github %}
+        <a href="{{ project.github }}" target="_blank" class="btn-secondary">GitHub →</a>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+
+</div>
+{% endblock %}

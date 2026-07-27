@@ -1,0 +1,23 @@
+/* Custom overrides and utilities */
+
+/* Ensure grid is responsive */
+@media (max-width: 768px) {
+    .hero-stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+    .stat-number {
+        font-size: 1.5rem;
+    }
+}
+
+/* Smooth transitions */
+a, button {
+    transition: all 0.2s ease;
+}
+
+/* Selection color */
+::selection {
+    background: rgba(0, 212, 255, 0.2);
+    color: #F0F4FF;
+}
