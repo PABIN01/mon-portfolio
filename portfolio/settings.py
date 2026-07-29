@@ -20,6 +20,8 @@ INSTALLED_APPS = [
     'projects',
     'experience',
     'contact',
+    'cloudinary_storage',
+    'cloudinary',
     'ckeditor',
     'whitenoise.runserver_nostatic',
 ]
@@ -106,3 +108,12 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='noreply@portfolio.com')
 CONTACT_EMAIL = config('CONTACT_EMAIL', default='michael@cipro.com')
+
+# Cloudinary
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': config('CLOUDINARY_API_KEY'),
+    'API_SECRET': config('CLOUDINARY_API_SECRET'),
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

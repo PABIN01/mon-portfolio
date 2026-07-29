@@ -4,12 +4,14 @@ certifi==2024.12.14
 cfgv==3.5.0
 charset-normalizer==3.4.0
 click==8.3.1
+cloudinary==1.45.0
 colorama==0.4.6
 distlib==0.4.0
 dj-database-url==3.1.2
 Django==6.0
 django-ckeditor==6.7.3
 django-ckeditor-5==0.2.19
+django-cloudinary-storage==0.3.0
 django-debug-toolbar==6.1.0
 django-environ==0.12.0
 django-js-asset==4.0.1
@@ -42,6 +44,7 @@ react==4.3.0
 requests==2.32.3
 ruff==0.14.9
 setuptools==80.9.0
+six==1.17.0
 sqlparse==0.5.3
 tzdata==2024.2
 urllib3==2.3.0
