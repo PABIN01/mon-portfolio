@@ -20,6 +20,20 @@
         color: var(--cyan);
         background: rgba(0,212,255,.05);
     }
+
+    .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        align-items: start;
+    }
+
+    @media (max-width: 768px) {
+        .about-grid {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+    }
 </style>
 {% endblock %}
 
@@ -27,13 +41,14 @@
 <div class="max-w-5xl mx-auto px-6" style="padding-top:4rem; padding-bottom:6rem;">
     <div style="margin-bottom:4rem;">
         <div class="section-label">À propos</div>
-        <h1 style="font-family:'Syne',sans-serif; font-size:clamp(2.25rem,5vw,3.5rem); font-weight:800; letter-spacing:-.02em; line-height:1.05;">
+        <h1 style="font-family:'Syne',sans-serif; font-size:clamp(2rem,5vw,3.5rem); font-weight:800; letter-spacing:-.02em; line-height:1.05;">
             Ingénieur, Entrepreneur,<br>
             <span style="color:var(--cyan);">Visionnaire.</span>
         </h1>
     </div>
 
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start;" class="flex-col md:grid">
+    <div class="about-grid">
+        <!-- Colonne gauche -->
         <div>
             <p style="color:var(--muted); font-size:1.0625rem; line-height:1.85; margin-bottom:1.5rem; font-weight:300;">
                 Michael Benjamin Pabingui est un <strong style="color:var(--white); font-weight:500;">ingénieur en systèmes d'information</strong> et entrepreneur technologique passionné par la transformation numérique et l'innovation.
@@ -64,6 +79,7 @@
             </div>
         </div>
 
+        <!-- Colonne droite -->
         <div>
             <div class="section-label">Domaines d'expertise</div>
             {% for domain, items in skills.items %}
