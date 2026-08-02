@@ -54,10 +54,7 @@
         pointer-events: none;
     }
 
-    .hero-content {
-        position: relative;
-        z-index: 2;
-    }
+    .hero-content { position: relative; z-index: 2; }
 
     .hero-tag {
         display: inline-flex;
@@ -101,6 +98,7 @@
         align-items: center;
         gap: 1rem;
         margin: 1.5rem 0 2rem;
+        flex-wrap: wrap;
     }
 
     .hero-title-bar span {
@@ -128,10 +126,7 @@
         font-weight: 300;
     }
 
-    .hero-description strong {
-        color: var(--white);
-        font-weight: 500;
-    }
+    .hero-description strong { color: var(--white); font-weight: 500; }
 
     .hero-actions {
         display: flex;
@@ -157,9 +152,7 @@
         line-height: 1;
     }
 
-    .stat-number span {
-        color: var(--cyan);
-    }
+    .stat-number span { color: var(--cyan); }
 
     .stat-label {
         font-size: 0.75rem;
@@ -169,7 +162,7 @@
         text-transform: uppercase;
     }
 
-    /* ─── HERO RIGHT PANEL ─── */
+    /* ─── HERO RIGHT ─── */
     .hero-right {
         position: relative;
         display: flex;
@@ -193,36 +186,22 @@
         opacity: 0.3;
     }
 
-.profile-frame-bg {
-    width: 100%;
-    height: 100%;
-    background: var(--navy-light);
-    border: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
-}
+    .profile-frame-bg {
+        width: 100%;
+        height: 100%;
+        background: var(--navy-light);
+        border: 1px solid var(--border);
+        position: relative;
+        overflow: hidden;
+    }
 
-.profile-frame-bg img {
-    position: absolute;   /* Permet de remplir exactement le cadre */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;     /* Remplit le cadre sans déformation */
-    display: block;        /* Supprime les marges inline */
-}
-
-.profile-placeholder {
-    font-family: 'Syne', sans-serif;
-    font-size: 5rem;
-    font-weight: 800;
-    color: rgba(0, 212, 255, 0.15);
-    letter-spacing: -0.05em;
-    position: absolute;    /* Centré dans le cadre si utilisé */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+    .profile-frame-bg img {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        object-fit: cover;
+        display: block;
+    }
 
     .profile-badge {
         position: absolute;
@@ -258,28 +237,6 @@
         gap: 0.5rem;
     }
 
-
-    .cert-pill::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: var(--cyan);
-        transform: scaleX(0);
-        transition: transform 0.3s ease;
-    }
-
-    .cert-pill:hover {
-        border-color: rgba(0, 212, 255, 0.25);
-        transform: translateY(-4px);
-    }
-
-    .cert-pill:hover::after {
-        transform: scaleX(1);
-    }
-
     .cert-pill {
         background: var(--navy-mid);
         border: 1px solid var(--border);
@@ -291,13 +248,28 @@
         white-space: nowrap;
         transition: all 0.3s;
         overflow: hidden;
-    }
-
-    /* ─── ROLES SECTION ─── */
-    .roles-section {
-        padding: 6rem 0;
         position: relative;
     }
+
+    .cert-pill::after {
+        content: '';
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        height: 2px;
+        background: var(--cyan);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .cert-pill:hover {
+        border-color: rgba(0, 212, 255, 0.25);
+        transform: translateY(-4px);
+    }
+
+    .cert-pill:hover::after { transform: scaleX(1); }
+
+    /* ─── ROLES ─── */
+    .roles-section { padding: 6rem 0; position: relative; }
 
     .role-card {
         padding: 2rem;
@@ -311,23 +283,15 @@
     .role-card::after {
         content: '';
         position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
+        bottom: 0; left: 0; right: 0;
         height: 2px;
         background: var(--cyan);
         transform: scaleX(0);
         transition: transform 0.3s ease;
     }
 
-    .role-card:hover {
-        border-color: rgba(0, 212, 255, 0.25);
-        transform: translateY(-4px);
-    }
-
-    .role-card:hover::after {
-        transform: scaleX(1);
-    }
+    .role-card:hover { border-color: rgba(0, 212, 255, 0.25); transform: translateY(-4px); }
+    .role-card:hover::after { transform: scaleX(1); }
 
     .role-number {
         font-family: 'Syne', sans-serif;
@@ -354,13 +318,9 @@
         margin-bottom: 1rem;
     }
 
-    .role-desc {
-        font-size: 0.875rem;
-        color: var(--muted);
-        line-height: 1.6;
-    }
+    .role-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
 
-    /* ─── FEATURED PROJECTS ─── */
+    /* ─── PROJECTS ─── */
     .project-card {
         background: var(--navy-mid);
         border: 1px solid var(--border);
@@ -370,10 +330,7 @@
         flex-direction: column;
     }
 
-    .project-card:hover {
-        border-color: rgba(0, 212, 255, 0.3);
-        transform: translateY(-4px);
-    }
+    .project-card:hover { border-color: rgba(0, 212, 255, 0.3); transform: translateY(-4px); }
 
     .project-img {
         height: 200px;
@@ -412,7 +369,7 @@
         margin: 0.25rem 0.25rem 0 0;
     }
 
-    /* ─── SCROLL INDICATOR ─── */
+    /* ─── SCROLL ─── */
     .scroll-indicator {
         display: flex;
         flex-direction: column;
@@ -429,6 +386,105 @@
         height: 60px;
         background: linear-gradient(to bottom, var(--cyan), transparent);
         animation: fadeInUp 1.5s infinite;
+    }
+
+    /* ─── ABOUT PREVIEW ─── */
+    .about-preview-card {
+        background: var(--navy-mid);
+        border: 1px solid var(--border);
+        padding: 2rem;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s;
+    }
+
+    .about-preview-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .about-preview-card:hover { border-color: rgba(0,212,255,0.3); transform: translateY(-3px); }
+    .about-preview-card:hover::before { opacity: 1; }
+
+    /* ─── SKILL PREVIEW ─── */
+    .skill-domain {
+        padding: 1.5rem;
+        background: var(--navy-mid);
+        border: 1px solid var(--border);
+        transition: all 0.3s;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .skill-domain::after {
+        content: '';
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        height: 2px;
+        background: var(--cyan);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .skill-domain:hover { border-color: rgba(0,212,255,0.25); }
+    .skill-domain:hover::after { transform: scaleX(1); }
+
+    .skill-chip {
+        display: inline-block;
+        padding: 0.25rem 0.625rem;
+        background: rgba(0,212,255,0.06);
+        border: 1px solid rgba(0,212,255,0.12);
+        font-size: 0.6875rem;
+        color: var(--muted);
+        margin: 0.2rem 0.2rem 0 0;
+        letter-spacing: 0.04em;
+    }
+
+    /* ─── EXPERIENCE PREVIEW ─── */
+    .exp-card {
+        display: flex;
+        gap: 1.5rem;
+        padding: 1.5rem;
+        background: var(--navy-mid);
+        border: 1px solid var(--border);
+        transition: all 0.3s;
+        position: relative;
+    }
+
+    .exp-card::before {
+        content: '';
+        position: absolute;
+        left: 0; top: 0; bottom: 0;
+        width: 2px;
+        background: var(--cyan);
+        transform: scaleY(0);
+        transition: transform 0.3s ease;
+        transform-origin: top;
+    }
+
+    .exp-card:hover { border-color: rgba(0,212,255,0.25); padding-left: 1.75rem; }
+    .exp-card:hover::before { transform: scaleY(1); }
+
+    .exp-year {
+        font-family: 'Syne', sans-serif;
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--cyan);
+        letter-spacing: 0.08em;
+        min-width: 60px;
+        padding-top: 0.25rem;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+        .hero-stats { gap: 1rem; }
+        .certs-float { display: none; }
+        .profile-badge { min-width: 140px; }
     }
 </style>
 {% endblock %}
@@ -483,9 +539,7 @@
                             <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
                     </a>
-                    <a href="{% url 'contact' %}" class="btn-secondary">
-                        Me contacter
-                    </a>
+                    <a href="{% url 'contact' %}" class="btn-secondary">Me contacter</a>
                 </div>
 
                 <div class="hero-stats animate-fade-up-delay-4">
@@ -504,22 +558,19 @@
                 </div>
             </div>
 
-            <!-- Right – Profile Visual -->
+            <!-- Right -->
             <div class="hero-right hidden md:flex animate-fade-up-delay-2">
                 <div class="profile-frame">
                     <div class="profile-frame-border"></div>
                     <div class="profile-frame-bg">
-                        <!-- Replace with actual photo: <img src="{% static 'images/michael.jpg' %}" alt="Michael Benjamin Pabingui"> -->
-                         <img src="{% static 'images/portfolio_profil2.png' %}" alt="Michael Benjamin Pabingui">
+                        <img src="{% static 'images/portfolio_profil2.png' %}" alt="Michael Benjamin Pabingui">
                     </div>
-
                     <div class="profile-badge">
-                        <div class="profile-badge-label">Poste actuel</div>
+                        <div class="profile-badge-label">Postes actuels</div>
                         <div class="profile-badge-value">PDG · Cipro</div>
                         <div class="profile-badge-value">CPO · Senagora</div>
-                        <div class="profile-badge-value">RQ · TotalEnergie</div>
+                        <div class="profile-badge-value">RQ · ADM Value</div>
                     </div>
-
                     <div class="certs-float">
                         <div class="cert-pill">CCNA</div>
                         <div class="cert-pill">AWS SAA</div>
@@ -546,14 +597,12 @@
         <div class="flex items-end justify-between mb-12 flex-wrap gap-4">
             <div>
                 <div class="section-label">Fonctions actuelles</div>
-                <h2 style="font-family: 'Syne', sans-serif; font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em;">
+                <h2 style="font-family:'Syne',sans-serif; font-size:clamp(1.75rem,4vw,2.5rem); font-weight:800; line-height:1.1; letter-spacing:-0.02em;">
                     4 rôles,<br>
-                    <span style="color: var(--muted); -webkit-text-stroke: 0.5px rgba(240,244,255,0.3);">1 vision.</span>
+                    <span style="color:var(--muted); -webkit-text-stroke:0.5px rgba(240,244,255,0.3);">1 vision.</span>
                 </h2>
             </div>
-            <a href="{% url 'experience' %}" class="btn-secondary text-sm">
-                Voir toutes les expériences →
-            </a>
+            <a href="{% url 'experience' %}" class="btn-secondary text-sm">Voir toutes les expériences →</a>
         </div>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -586,25 +635,222 @@
 </section>
 
 
-<!-- ═══════════════════════════════ FEATURED PROJECTS ═══════════════════ -->
+<!-- ═══════════════════════════════ À PROPOS PREVIEW ═══════════════════ -->
+<section style="padding: 6rem 0; background: var(--navy-mid); border-top: 1px solid var(--border);">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex items-end justify-between mb-12 flex-wrap gap-4">
+            <div>
+                <div class="section-label">Qui suis-je</div>
+                <h2 style="font-family:'Syne',sans-serif; font-size:clamp(1.75rem,4vw,2.5rem); font-weight:800; letter-spacing:-0.02em;">
+                    Ingénieur, Entrepreneur,<br>
+                    <span style="color:var(--cyan);">Visionnaire.</span>
+                </h2>
+            </div>
+            <a href="{% url 'about' %}" class="btn-secondary text-sm">En savoir plus →</a>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            <!-- Bio -->
+            <div class="about-preview-card md:col-span-2">
+                <p style="color:var(--muted); font-size:1rem; line-height:1.85; margin-bottom:1.25rem; font-weight:300;">
+                    Ingénieur en systèmes d'information et entrepreneur technologique, je combine <strong style="color:var(--white); font-weight:500;">expertise technique</strong> et <strong style="color:var(--white); font-weight:500;">vision stratégique</strong> pour accélérer la transformation numérique des organisations.
+                </p>
+                <p style="color:var(--muted); font-size:0.9375rem; line-height:1.8; font-weight:300;">
+                    Passionné par le cloud, la cybersécurité et les pratiques agiles, j'occupe simultanément plusieurs rôles stratégiques alliant leadership technique et management de produit.
+                </p>
+                <div style="margin-top:2rem; display:flex; flex-wrap:wrap; gap:0.75rem;">
+                    <span style="padding:0.5rem 1rem; border:1px solid var(--border); color:var(--cyan); font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase;">Transformation digitale</span>
+                    <span style="padding:0.5rem 1rem; border:1px solid var(--border); color:var(--cyan); font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase;">Cloud & DevOps</span>
+                    <span style="padding:0.5rem 1rem; border:1px solid var(--border); color:var(--cyan); font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase;">Cybersécurité</span>
+                    <span style="padding:0.5rem 1rem; border:1px solid var(--border); color:var(--cyan); font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase;">Product Management</span>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="about-preview-card">
+                <div style="font-size:0.6875rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--cyan); margin-bottom:1.25rem;">Certifications</div>
+                <div style="display:flex; flex-direction:column; gap:0.875rem;">
+                    <div style="display:flex; align-items:center; gap:0.875rem;">
+                        <div style="width:6px; height:6px; background:var(--cyan); border-radius:50%; flex-shrink:0;"></div>
+                        <span style="color:var(--white); font-size:0.875rem;">CCNA</span>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:0.875rem;">
+                        <div style="width:6px; height:6px; background:var(--amber); border-radius:50%; flex-shrink:0;"></div>
+                        <span style="color:var(--white); font-size:0.875rem;">AWS Solutions Architect</span>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:0.875rem;">
+                        <div style="width:6px; height:6px; background:var(--cyan); border-radius:50%; flex-shrink:0;"></div>
+                        <span style="color:var(--white); font-size:0.875rem;">CompTIA Security+</span>
+                    </div>
+                </div>
+                <div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--border);">
+                    <a href="{% url 'about' %}" class="btn-primary" style="font-size:0.8rem; padding:0.75rem 1.5rem; width:100%; justify-content:center;">
+                        Voir mon profil complet
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════ EXPÉRIENCES PREVIEW ════════════════ -->
+<section style="padding: 6rem 0; border-top: 1px solid var(--border);">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex items-end justify-between mb-12 flex-wrap gap-4">
+            <div>
+                <div class="section-label">Parcours</div>
+                <h2 style="font-family:'Syne',sans-serif; font-size:clamp(1.75rem,4vw,2.5rem); font-weight:800; letter-spacing:-0.02em;">
+                    Expériences<br>
+                    <span style="color:var(--muted); -webkit-text-stroke:0.5px rgba(240,244,255,0.3);">professionnelles.</span>
+                </h2>
+            </div>
+            <a href="{% url 'experience' %}" class="btn-secondary text-sm">Voir tout le parcours →</a>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:1rem;">
+            <div class="exp-card">
+                <div class="exp-year">2023 —<br>Présent</div>
+                <div>
+                    <div style="font-family:'Syne',sans-serif; font-size:1rem; font-weight:700; color:var(--white); margin-bottom:0.25rem;">Chief Product Officer</div>
+                    <div style="font-size:0.8125rem; color:var(--cyan); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:0.625rem;">Senagora</div>
+                    <div style="font-size:0.875rem; color:var(--muted); line-height:1.6;">Gestion des produits numériques, stratégie d'innovation et accompagnement d'une centaine de startups africaines.</div>
+                </div>
+            </div>
+
+            <div class="exp-card">
+                <div class="exp-year">2022 —<br>Présent</div>
+                <div>
+                    <div style="font-family:'Syne',sans-serif; font-size:1rem; font-weight:700; color:var(--white); margin-bottom:0.25rem;">Directeur Informatique</div>
+                    <div style="font-size:0.8125rem; color:var(--cyan); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:0.625rem;">Sanziri Security</div>
+                    <div style="font-size:0.875rem; color:var(--muted); line-height:1.6;">Infrastructure IT, cybersécurité et pilotage de la transformation digitale de l'organisation.</div>
+                </div>
+            </div>
+
+            <div class="exp-card">
+                <div class="exp-year">2020 —<br>Présent</div>
+                <div>
+                    <div style="font-family:'Syne',sans-serif; font-size:1rem; font-weight:700; color:var(--white); margin-bottom:0.25rem;">PDG & Fondateur</div>
+                    <div style="font-size:0.8125rem; color:var(--cyan); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:0.625rem;">CIPRO</div>
+                    <div style="font-size:0.875rem; color:var(--muted); line-height:1.6;">Direction générale, développement commercial et pilotage stratégique d'un centre d'incubation professionnelle.</div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top:2rem; text-align:center;">
+            <a href="{% url 'experience' %}" class="btn-primary" style="font-size:0.875rem;">
+                Voir toutes mes expériences
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════ COMPÉTENCES PREVIEW ════════════════ -->
+<section style="padding: 6rem 0; background: var(--navy-mid); border-top: 1px solid var(--border);">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex items-end justify-between mb-12 flex-wrap gap-4">
+            <div>
+                <div class="section-label">Expertise technique</div>
+                <h2 style="font-family:'Syne',sans-serif; font-size:clamp(1.75rem,4vw,2.5rem); font-weight:800; letter-spacing:-0.02em;">
+                    Compétences<br>
+                    <span style="color:var(--cyan);">& savoir-faire.</span>
+                </h2>
+            </div>
+            <a href="{% url 'skills' %}" class="btn-secondary text-sm">Voir toutes les compétences →</a>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="skill-domain">
+                <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1.25rem;">
+                    <div style="width:32px; height:32px; background:rgba(0,212,255,0.1); border:1px solid rgba(0,212,255,0.2); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18"/></svg>
+                    </div>
+                    <h3 style="font-family:'Syne',sans-serif; font-size:0.9375rem; font-weight:700; color:var(--white);">Réseaux</h3>
+                </div>
+                <div>
+                    <span class="skill-chip">CCNA</span>
+                    <span class="skill-chip">TCP/IP</span>
+                    <span class="skill-chip">Architecture réseau</span>
+                    <span class="skill-chip">Administration</span>
+                </div>
+            </div>
+
+            <div class="skill-domain">
+                <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1.25rem;">
+                    <div style="width:32px; height:32px; background:rgba(0,212,255,0.1); border:1px solid rgba(0,212,255,0.2); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5"><path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+                    </div>
+                    <h3 style="font-family:'Syne',sans-serif; font-size:0.9375rem; font-weight:700; color:var(--white);">Cloud</h3>
+                </div>
+                <div>
+                    <span class="skill-chip">AWS</span>
+                    <span class="skill-chip">Architecture cloud</span>
+                    <span class="skill-chip">DevOps</span>
+                    <span class="skill-chip">Déploiement</span>
+                </div>
+            </div>
+
+            <div class="skill-domain">
+                <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1.25rem;">
+                    <div style="width:32px; height:32px; background:rgba(0,212,255,0.1); border:1px solid rgba(0,212,255,0.2); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3 style="font-family:'Syne',sans-serif; font-size:0.9375rem; font-weight:700; color:var(--white);">Cybersécurité</h3>
+                </div>
+                <div>
+                    <span class="skill-chip">Security+</span>
+                    <span class="skill-chip">Audit</span>
+                    <span class="skill-chip">Gestion des risques</span>
+                    <span class="skill-chip">Sécurité réseau</span>
+                </div>
+            </div>
+
+            <div class="skill-domain">
+                <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1.25rem;">
+                    <div style="width:32px; height:32px; background:rgba(0,212,255,0.1); border:1px solid rgba(0,212,255,0.2); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                    </div>
+                    <h3 style="font-family:'Syne',sans-serif; font-size:0.9375rem; font-weight:700; color:var(--white);">Management</h3>
+                </div>
+                <div>
+                    <span class="skill-chip">Product Management</span>
+                    <span class="skill-chip">Agile/Scrum</span>
+                    <span class="skill-chip">Leadership</span>
+                    <span class="skill-chip">Gestion de projet</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top:2rem; text-align:center;">
+            <a href="{% url 'skills' %}" class="btn-primary" style="font-size:0.875rem;">
+                Voir toutes mes compétences
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════ PROJETS FEATURED ═══════════════════ -->
 {% if featured_projects %}
-<section style="padding: 4rem 0 6rem;">
+<section style="padding: 6rem 0; border-top: 1px solid var(--border);">
     <div class="max-w-6xl mx-auto px-6">
         <div class="flex items-end justify-between mb-12 flex-wrap gap-4">
             <div>
                 <div class="section-label">Réalisations</div>
-                <h2 style="font-family: 'Syne', sans-serif; font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; letter-spacing: -0.02em;">
+                <h2 style="font-family:'Syne',sans-serif; font-size:clamp(1.75rem,4vw,2.5rem); font-weight:800; letter-spacing:-0.02em;">
                     Projets sélectionnés
                 </h2>
             </div>
-            <a href="{% url 'projects' %}" class="btn-secondary text-sm">
-                Tous les projets →
-            </a>
+            <a href="{% url 'projects' %}" class="btn-secondary text-sm">Tous les projets →</a>
         </div>
 
         <div class="grid md:grid-cols-3 gap-6">
             {% for project in featured_projects %}
-            <a href="{% url 'project_detail' project.slug %}" class="project-card" style="text-decoration: none;">
+            <a href="{% url 'project_detail' project.slug %}" class="project-card" style="text-decoration:none;">
                 <div class="project-img">
                     {% if project.image %}
                     <img src="{{ project.image.url }}" alt="{{ project.title }}" style="width:100%; height:100%; object-fit:cover;">
@@ -614,14 +860,10 @@
                     </svg>
                     {% endif %}
                 </div>
-                <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
+                <div style="padding:1.5rem; flex:1; display:flex; flex-direction:column;">
                     <div class="project-cat mb-3">{{ project.get_category_display }}</div>
-                    <h3 style="font-family: 'Syne', sans-serif; font-size: 1.0625rem; font-weight: 700; color: var(--white); margin-bottom: 0.75rem;">
-                        {{ project.title }}
-                    </h3>
-                    <p style="font-size: 0.875rem; color: var(--muted); line-height: 1.6; flex: 1; margin-bottom: 1.25rem;">
-                        {{ project.description|truncatechars:100 }}
-                    </p>
+                    <h3 style="font-family:'Syne',sans-serif; font-size:1.0625rem; font-weight:700; color:var(--white); margin-bottom:0.75rem;">{{ project.title }}</h3>
+                    <p style="font-size:0.875rem; color:var(--muted); line-height:1.6; flex:1; margin-bottom:1.25rem;">{{ project.description|truncatechars:100 }}</p>
                     <div>
                         {% for tech in project.get_technologies_list %}
                         <span class="tech-tag">{{ tech }}</span>
@@ -631,27 +873,32 @@
             </a>
             {% endfor %}
         </div>
+
+        <div style="margin-top:2.5rem; text-align:center;">
+            <a href="{% url 'projects' %}" class="btn-primary" style="font-size:0.875rem;">
+                Voir tous mes projets
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
     </div>
 </section>
 {% endif %}
 
 
-<!-- ═══════════════════════════════ CTA BAND ═══════════════════════════ -->
-<section style="padding: 5rem 0; background: var(--navy-mid); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+<!-- ═══════════════════════════════ CTA BAND ════════════════════════════ -->
+<section style="padding:5rem 0; background:var(--navy-mid); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
     <div class="max-w-4xl mx-auto px-6 text-center">
-        <div class="section-label" style="justify-content: center;">Travaillons ensemble</div>
-        <h2 style="font-family: 'Syne', sans-serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1.5rem;">
+        <div class="section-label" style="justify-content:center;">Travaillons ensemble</div>
+        <h2 style="font-family:'Syne',sans-serif; font-size:clamp(2rem,5vw,3.5rem); font-weight:800; line-height:1.05; letter-spacing:-0.02em; margin-bottom:1.5rem;">
             Un projet en tête ?<br>
-            <span style="color: var(--cyan);">Discutons-en.</span>
+            <span style="color:var(--cyan);">Discutons-en.</span>
         </h2>
-        <p style="color: var(--muted); font-size: 1.0625rem; max-width: 480px; margin: 0 auto 2.5rem; font-weight: 300; line-height: 1.7;">
+        <p style="color:var(--muted); font-size:1.0625rem; max-width:480px; margin:0 auto 2.5rem; font-weight:300; line-height:1.7;">
             Recrutement, partenariat, projet freelance ou simplement échanger — je suis ouvert à toute conversation.
         </p>
-        <a href="{% url 'contact' %}" class="btn-primary" style="font-size: 1rem; padding: 1rem 2.5rem;">
+        <a href="{% url 'contact' %}" class="btn-primary" style="font-size:1rem; padding:1rem 2.5rem;">
             Envoyer un message
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
     </div>
 </section>
