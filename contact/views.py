@@ -2,16 +2,25 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
-from django.views.decorators.cache import never_cache
-from ratelimit.decorators import ratelimit
+from django.core.cache import cache
 from .forms import ContactForm
 
-@ratelimit(key='ip', rate='5/h', method='POST', block=True)
+
 def contact(request):
     if request.method == 'POST':
+        # Rate limiting manuel : 5 messages par heure par IP
+        ip = request.META.get('HTTP_X_FORWARDED_FOR', request.META.get('REMOTE_ADDR', '')).split(',')[0].strip()
+        cache_key = f'contact_ratelimit_{ip}'
+        attempts = cache.get(cache_key, 0)
+
+        if attempts >= 5:
+            messages.error(request, 'Trop de messages envoyés. Veuillez réessayer dans une heure.')
+            return redirect('contact')
+
         form = ContactForm(request.POST)
         if form.is_valid():
             msg = form.save()
+            cache.set(cache_key, attempts + 1, 3600)  # 1 heure
             try:
                 send_mail(
                     subject=f"[Portfolio] {msg.subject or 'Nouveau message'} – {msg.name}",
