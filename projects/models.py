@@ -1,6 +1,5 @@
 from django.db import models
-from ckeditor.fields import RichTextField
-
+from django_ckeditor_5.fields import CKEditor5Field
 
 class Project(models.Model):
     CATEGORY_CHOICES = [
@@ -17,7 +16,7 @@ class Project(models.Model):
     description = models.TextField(verbose_name="Description")
     technologies = models.CharField(max_length=500, verbose_name="Technologies utilisées", help_text="Séparées par des virgules")
     impact = models.TextField(verbose_name="Impact du projet", blank=True)
-    features = RichTextField(verbose_name="Fonctionnalités principales de la plateforme", blank=True)
+    features = CKEditor5Field(verbose_name="Fonctionnalités principales de la plateforme", blank=True)
     objectives = models.TextField(verbose_name="Objectifs")
     results = models.TextField(verbose_name="Résultats")
     image = models.ImageField(upload_to='projects/', blank=True, null=True, verbose_name="Image")

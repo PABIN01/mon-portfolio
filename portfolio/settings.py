@@ -22,7 +22,7 @@ INSTALLED_APPS = [
     'contact',
     'cloudinary_storage',
     'cloudinary',
-    'ckeditor',
+    'django_ckeditor_5',
     'whitenoise.runserver_nostatic',
 ]
 
@@ -136,5 +136,18 @@ STORAGES = {
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    }
+}
+
+# CKEditor 5
+CKEDITOR_5_CONFIGS = {
+    'default': {
+        'toolbar': [
+            'heading', '|',
+            'bold', 'italic', 'underline', '|',
+            'bulletedList', 'numberedList', '|',
+            'link', 'blockQuote', '|',
+            'undo', 'redo'
+        ],
     }
 }
