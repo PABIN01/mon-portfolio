@@ -144,23 +144,10 @@ CKEDITOR_5_CONFIGS = {
     'default': {
         'toolbar': [
             'heading', '|',
-            'bold', 'italic', 'underline', 'strikethrough', '|',
-            'fontColor', 'fontBackgroundColor', '|',
+            'bold', 'italic', 'underline', '|',
             'bulletedList', 'numberedList', '|',
-            'alignment', '|',
-            'link', 'blockQuote', 'code', '|',
-            'insertTable', '|',
+            'link', 'blockQuote', '|',
             'undo', 'redo'
-        ],
-        'plugins': [
-            'Bold', 'Italic', 'Underline', 'Strikethrough',
-            'FontColor', 'FontBackgroundColor',
-            'BulletedList', 'NumberedList',
-            'Alignment',
-            'Link', 'BlockQuote', 'Code',
-            'Table', 'TableToolbar',
-            'Heading',
-            'Undo',
         ],
     }
 }
