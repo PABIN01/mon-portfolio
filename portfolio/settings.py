@@ -142,12 +142,15 @@ CACHES = {
 # CKEditor 5
 CKEDITOR_5_CONFIGS = {
     'default': {
-        'toolbar': [
-            'heading', '|',
-            'bold', 'italic', 'underline', '|',
-            'bulletedList', 'numberedList', '|',
-            'link', 'blockQuote', '|',
-            'undo', 'redo'
-        ],
+        'toolbar': {
+            'items': [
+                'heading', '|',
+                'bold', 'italic', 'underline', 'strikethrough', '|',
+                'fontColor', 'fontBackgroundColor', '|',
+                'bulletedList', 'numberedList', '|',
+                'link', 'blockQuote', '|',
+                'undo', 'redo'
+            ]
+        },
     }
 }
