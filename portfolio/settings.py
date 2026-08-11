@@ -146,11 +146,24 @@ CKEDITOR_5_CONFIGS = {
             'items': [
                 'heading', '|',
                 'bold', 'italic', 'underline', 'strikethrough', '|',
-                'fontColor', 'fontBackgroundColor', '|',
-                'bulletedList', 'numberedList', '|',
-                'link', 'blockQuote', '|',
-                'undo', 'redo'
+                'fontColor', 'fontBackgroundColor', 'fontSize', '|',
+                'alignment', '|',
+                'bulletedList', 'numberedList', 'todoList', '|',
+                'outdent', 'indent', '|',
+                'link', 'blockQuote', 'code', 'codeBlock', '|',
+                'insertTable', '|',
+                'horizontalLine', '|',
+                'undo', 'redo', 'findAndReplace'
             ]
+        },
+        'fontSize': {
+            'options': [10, 12, 14, 'default', 18, 20, 24, 28, 32]
+        },
+        'alignment': {
+            'options': ['left', 'center', 'right', 'justify']
+        },
+        'table': {
+            'contentToolbar': ['tableColumn', 'tableRow', 'mergeTableCells']
         },
     }
 }
